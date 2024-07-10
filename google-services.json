@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "110159095083",
+    "project_id": "lakhani-hub-3e9fd",
+    "storage_bucket": "lakhani-hub-3e9fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:110159095083:android:2b56e2deac2b06d36b116e",
+        "android_client_info": {
+          "package_name": "Lakhani.hub.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjXzwKNxkGXbQE1bZquLXIlR_6CyQn1zk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
