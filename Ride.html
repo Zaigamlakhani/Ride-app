@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uber-like Website</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 15px 20px;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        .button {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 15px;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #333;
+        }
+        .ride-info {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('rideForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                var pickup = document.getElementById('pickup').value;
+                var dropoff = document.getElementById('dropoff').value;
+                var rideInfo = document.getElementById('rideInfo');
+                var rideDetails = document.getElementById('rideDetails');
+                rideDetails.innerHTML = 'Pickup: ' + pickup + '<br>Dropoff: ' + dropoff;
+                rideInfo.style.display = 'block';
+            });
+        });
+
+        function confirmRide() {
+            var pickup = document.getElementById('pickup').value;
+            var dropoff = document.getElementById('dropoff').value;
+            var message = `Ride confirmed! Pickup: ${pickup}, Dropoff: ${dropoff}`;
+            var whatsappUrl = `https://wa.me/261384141874?text=${encodeURIComponent(message)}`;
+            window.location.href = whatsappUrl;
+        }
+        
+    </script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(function(registration) {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      }).catch(function(error) {
+        console.log('ServiceWorker registration failed: ', error);
+      });
+  }
+</script>
+</head>
+<body>
+    <header>
+        <h1>Uber-like Website</h1>
+    </header>
+    <div class="container">
+        <div class="card">
+            <h2>Request a Ride</h2>
+            <form id="rideForm">
+                <label for="pickup">Pickup Location:</label><br>
+                <input type="text" id="pickup" name="pickup" required><br><br>
+                <label for="dropoff">Dropoff Location:</label><br>
+                <input type="text" id="dropoff" name="dropoff" required><br><br>
+                <button type="submit" class="button">Request Ride</button>
+            </form>
+            <div class="ride-info" id="rideInfo">
+                <h3>Ride Details</h3>
+                <p id="rideDetails"></p>
+                <button class="button" onclick="confirmRide()">Confirm Ride</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>Available Drivers</h2>
+            <ul id="driversList">
+                <li>Driver 1: John Doe - 2 minutes away</li>
+                <li>Driver 2: Jane Smith - 5 minutes away</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
